@@ -15,6 +15,10 @@ class CreateUmetnickoDelosTable extends Migration
     {
         Schema::create('umetnicko_delos', function (Blueprint $table) {
             $table->id();
+             $table->string('naziv');
+             $table->integer('godina');
+             $table->foreignId('autor_id');
+             $table->foreignId('vrsta_id'); 
             $table->timestamps();
         });
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateVrstasTable extends Migration
+class DodajKolonuCenaUTabeluUmetnickoDelo extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateVrstasTable extends Migration
      */
     public function up()
     {
-        Schema::create('vrstas', function (Blueprint $table) {
-            $table->id();
-            $table->string('naziv');
-            $table->timestamps();
+        Schema::table('umetnicko_delos', function (Blueprint $table) {
+           
+            
+             $table->integer('cena');
+        
         });
     }
 
@@ -27,6 +28,11 @@ class CreateVrstasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vrstas');
+        Schema::table('umetnicko_delos', function (Blueprint $table) {
+           
+            
+            $table->removeColumn('cena');
+       
+       });
     }
 }

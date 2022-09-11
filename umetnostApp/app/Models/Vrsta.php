@@ -9,7 +9,7 @@ class Vrsta extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'naziv',
+        'naziv_vrste',
  
     ];
 
