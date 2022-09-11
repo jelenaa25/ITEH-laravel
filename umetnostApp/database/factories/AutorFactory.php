@@ -14,7 +14,12 @@ class AutorFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'ime' => $this->faker->firstName(),
+            'prezime' => $this->faker->lastName(),
+            'drzava' => $this->faker->country(),
+            'grad' => $this->faker->city(),
+            'kontakt' => $this->faker->phoneNumber(),
+       
         ];
     }
 }
