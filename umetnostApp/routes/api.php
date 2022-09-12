@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AutfController;
 use App\Http\Controllers\AutorController;
 use App\Http\Controllers\UmetickoDeloController;
 
@@ -17,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::post('/register',[AutfController::class,'register']);
+Route::post('/login',[AutfController::class,'login']);
+
 
 Route::get('/autori',[AutorController::class,'index']);
 Route::get('/autori/{id}',[AutorController::class,'show']);
@@ -25,9 +29,12 @@ Route::get('/autori/{id}',[AutorController::class,'show']);
 Route::get('/dela',[UmetickoDeloController::class,'index']);
 Route::get('/dela/{id}',[UmetickoDeloController::class,'show']);
 
-Route::post('/dela',[UmetickoDeloController::class,'store']);
-Route::put('/dela/{id}',[UmetickoDeloController::class,'update']);
 
-Route::delete('/dela/{id}',[UmetickoDeloController::class,'destroy']);
+Route::group(['middleware' => ['auth:sanctum']], function () {
 
+    Route::post('/logout',[AutfController::class,'logout']);
 
+    Route::post('/dela',[UmetickoDeloController::class,'store']);
+    Route::put('/dela/{id}',[UmetickoDeloController::class,'update']);
+    Route::delete('/dela/{id}',[UmetickoDeloController::class,'destroy']);
+});
