@@ -24,3 +24,10 @@ Route::get('/autori/{id}',[AutorController::class,'show']);
 
 Route::get('/dela',[UmetickoDeloController::class,'index']);
 Route::get('/dela/{id}',[UmetickoDeloController::class,'show']);
+
+Route::post('/dela',[UmetickoDeloController::class,'store']);
+Route::put('/dela/{id}',[UmetickoDeloController::class,'update']);
+
+Route::delete('/dela/{id}',[UmetickoDeloController::class,'destroy']);
+
+
