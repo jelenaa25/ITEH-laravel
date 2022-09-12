@@ -1,6 +1,10 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\AutorController;
+use App\Http\Controllers\UmetickoDeloController;
+
+use App\Models\UmetnickoDelo;
+ 
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('/autori',[AutorController::class,'index']);
+Route::get('/autori/{id}',[AutorController::class,'show']);
+
+
+Route::get('/dela',[UmetickoDeloController::class,'index']);
+Route::get('/dela/{id}',[UmetickoDeloController::class,'show']);
