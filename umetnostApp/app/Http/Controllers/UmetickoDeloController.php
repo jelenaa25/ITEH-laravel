@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UmetnickoDeloResource;
 use App\Models\UmetnickoDelo;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class UmetickoDeloController extends Controller
      */
     public function index()
     {
-        return UmetnickoDelo::all();
+        return UmetnickoDeloResource::collection(UmetnickoDelo::all());
     }
 
     /**
@@ -46,7 +47,7 @@ class UmetickoDeloController extends Controller
      */
     public function show($id)
     {
-        return UmetnickoDelo::find($id);
+        return new UmetnickoDeloResource(UmetnickoDelo::find($id));
     }
 
     /**
